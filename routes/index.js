@@ -6,5 +6,6 @@ const measurementRouter = require("./measurement");
 
 router.use("/users", usersRouter);
 router.use("", measurementRouter);
+router.use("/measurement-data", measurementRouter);
 
 module.exports = router;

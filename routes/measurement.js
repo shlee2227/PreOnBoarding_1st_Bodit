@@ -8,5 +8,6 @@ router.delete(
   "/measurement/:measurementId",
   measurementController.deleteMeasurementData,
 );
+router.post("/user/:userId", measurementController.createMeasurementData);
 
 module.exports = router;
