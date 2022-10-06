@@ -1,6 +1,10 @@
 const userService = require("../services/user");
 
 const createUser = async (req, res) => {
+  if (!req.body.data){
+    res.status(400).json({message: '누락된 정보가 있습니다.'})
+    return;
+  }
   const { name, birth, height, phone } = req.body.data
   
   try {
@@ -43,8 +47,13 @@ const getAUserByUserId = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  if (!req.body.data){
+    res.status(400).json({message: '누락된 정보가 있습니다.'})
+    return;
+  }
   const { name, birth, height, phone } = req.body.data
   const userId = req.body.data.user_id
+  
   try{
     if (!(userId && name && birth && height && phone )) {
       res.status(400).json({message: '누락된 정보가 있습니다.'})

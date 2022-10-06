@@ -1,7 +1,7 @@
 const userDao = require("../models/user");
 
 const checkUserInput = async (name, birth, height, phone) => {
-  const name_regex = /^[가-힣a-zA-Z]+$/;
+  const name_regex = /^[가-힣a-zA-Z]{1,50}$/;
   if (!name_regex.test(name)) {
     const error = new Error('유효하지 않은 name입니다.')
     error.statusCode = 400
@@ -15,7 +15,7 @@ const checkUserInput = async (name, birth, height, phone) => {
     throw error
    }
 
-  const height_regex = /^\d*[.]\d{1}$/
+  const height_regex = /^\d{2,3}[.]\d{1}$/
   if (!height_regex.test(height)) {
     const error = new Error('유효하지 않은 height입니다.')
     error.statusCode = 400
@@ -59,6 +59,12 @@ const getAUserByUserId = async (userId) => {
 };
 
 const updateUser = async (userId, name, birth, height, phone) => {
+  const user = await userDao.getUserByPhone(phone)
+  if (user) {
+    const error = new Error('이미 등록된 phone입니다.')
+    error.statusCode = 400
+    throw error
+  }
   return await userDao.updateUser(userId, name, birth, height, phone);
 };
 
