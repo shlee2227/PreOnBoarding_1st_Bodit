@@ -9,6 +9,46 @@ const getUserByUserId = async (user_id) => {
   return user;
 };
 
+const getMeasurementByIdAndUser = async (measurement_id, user_id) => {
+  const [measurement] = await myDataSource.query(
+      `SELECT id FROM measurements WHERE id = ? AND user_id = ?`,
+      [measurement_id, user_id]
+  );
+  return measurement;
+}
+
+const getUserMeasurementData = async (user_id, measurement_id) => {
+  const [result] = await myDataSource.query(
+      `SELECT 
+        u.id,
+        u.name,
+        u.birth,
+        u.height,
+        u.phone,
+        m.created_at,
+        m.weight,
+        JSON_ARRAYAGG(
+            JSON_OBJECT(
+                    'data_type_id', md.data_type_id,
+                    'data_type_name', dt.name,
+                    'data', md.data
+            )
+        ) AS measurement_data
+    FROM 
+        users AS u 
+    JOIN
+        measurements AS m ON m.user_id = u.id
+    JOIN 
+        measurement_data AS md ON m.id = md.measurement_id
+    JOIN
+        data_types AS dt ON md.data_type_id = dt.id
+    WHERE
+        u.id = ? AND m.id = ? ;`,
+      [user_id, measurement_id]
+  )
+  return result
+}
+
 const getDataTypeIdByTypeId = async (data_type_id) => {
   const [dataType] = await myDataSource.query(
     `SELECT id FROM data_types WHERE id = ?`,
@@ -70,7 +110,7 @@ const getMeasurementByUserIdAndWeight = async (user_id, weight) => {
   );
   return measurement
 };
-
+  
 const getMeasurementDataByIdAndTypeId = async (measurement_id, data_type_id) => {
   const [measurementData] = await myDataSource.query(
     `SELECT id FROM measurement_data WHERE measurement_id = ? AND data_type_id = ?`,
@@ -114,7 +154,7 @@ const getMeasurementData = async (date1, date2, weight1, weight2) => {
   );
   return getMeasurementData;
 };
-  
+      
 const deleteMeasurementData = async (measurementId) => {
   const queryRunner = myDataSource.createQueryRunner();
   await queryRunner.connect();
@@ -140,6 +180,8 @@ const deleteMeasurementData = async (measurementId) => {
   
 module.exports = {
   getUserByUserId,
+  getMeasurementByIdAndUser,
+  getUserMeasurementData,
   getDataTypeIdByTypeId,
   createMeasurementData,
   getMeasurementByUserIdAndWeight,
