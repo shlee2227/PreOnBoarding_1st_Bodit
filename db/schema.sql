@@ -82,15 +82,22 @@ CREATE TABLE `users` (
   `birth` varchar(50) DEFAULT NULL,
   `height` decimal(4,1) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
+<<<<<<< HEAD
   `deleted` varchar(50) DEFAULT '0',
+=======
+>>>>>>> 2d1fc67 ([ADD] 특정 회원에 대한 측정 기록과 측정 데이터 생성하기)
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+<<<<<<< HEAD
 
 -- Dumping routines for database 'bodit_2nd'
 
+=======
+-- Dumping routines for database 'bodit'
+>>>>>>> 2d1fc67 ([ADD] 특정 회원에 대한 측정 기록과 측정 데이터 생성하기)
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -117,7 +124,11 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20221004095255'),
   ('20221004095321'),
   ('20221004095332'),
+<<<<<<< HEAD
   ('20221004095346'),
   ('20221006044656');
 
+=======
+  ('20221004095346');
+>>>>>>> 2d1fc67 ([ADD] 특정 회원에 대한 측정 기록과 측정 데이터 생성하기)
 UNLOCK TABLES;
