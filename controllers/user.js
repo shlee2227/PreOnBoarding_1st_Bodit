@@ -37,6 +37,9 @@ const getUsers = async (req,res) => {
 const getAUserByUserId = async (req, res) => {
   try {
     const userId = req.params.user_id
+    if (!Number(userId)) {
+      res.status(404).json({message: '잘못된 경로입니다.'})
+    }
     const user = await userService.getAUserByUserId(userId)
     res.status(200).json({message: '회원 정보 가져오기 성공!', result: user})
   } 
@@ -72,6 +75,9 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   const userId = req.params.user_id
+  if (!Number(userId)) {
+    res.status(404).json({message: '잘못된 경로입니다.'})
+  }
   try {
     await userService.getAUserByUserId(userId)
     await userService.deleteUser(userId)
