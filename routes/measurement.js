@@ -3,6 +3,11 @@ const measurementController = require("../controllers/measurement");
 
 const router = express.Router();
 
-router.get("/user/:userId", measurementController.getMeasurementData);
+router.get("/user/:userId", measurementController.getUserMeasurementData);
+router.get("/measurement", measurementController.getMeasurementData);
+router.delete(
+  "/measurement/:measurementId",
+  measurementController.deleteMeasurementData,
+);
 
 module.exports = router;
