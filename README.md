@@ -30,14 +30,14 @@
 
 ## 3. 데이터 모델링
 
-▶️ [dbdiagram Link](https://dbdiagram.io/d/62f5e7f5c2d9cf52fa93b434)
+▶️ [dbdiagram Link](https://dbdiagram.io/d/633bddcef0018a1c5f8b39d4)
 
-![bodit](https://user-images.githubusercontent.com/70873668/194274893-856caf1f-dba4-453a-9983-289c457fd85c.png)
+![bodit](https://user-images.githubusercontent.com/107532513/194332330-a70f64be-4d72-4ceb-8499-c2f5730186ae.png)
 
 
 ## 4. 적용 기술
 
-- Back_End : Node.js, Express, MySQL, TypeORM, Postman, Slack, Zepp
+- Back_End : Node.js, Express, MySQL, TypeORM, Postman, Slack, Zep
   
 
 ## 5. 구현 기능 및 API Docs
@@ -91,8 +91,14 @@
 
     - 비식별화 된 회원은 모든 기능에서 제외
 
+- 김민우
 
+  - 측정 기록 및 데이터 API 테스트 코드 작성
     
+- 이신희
+
+  - 회원 관련 API 테스트 코드 작성
+
 
 ## 🔶Reference
 
