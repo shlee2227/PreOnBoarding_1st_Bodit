@@ -1,11 +1,30 @@
 const { get } = require("../routes/measurement.js");
 const measurementService = require("../services/measurement");
 
+const createMeasurementData = async (req, res) => {
+  try {
+    const user_id = req.params.userId;
+    const { weight, type_data } = req.body;
+  
+    if (!weight || !type_data) {
+      const error = new Error("데이터를 확인해주세요.");
+      error.statusCode = 400;
+      throw error;
+    }
+    await measurementService.createMeasurementData(user_id, weight, type_data)
+    res.status(201).json({message : "측정 기록 생성 성공"})
+
+  } catch (err) {
+    console.log(err);
+    res.status(err.statusCode || 500).json({ message: err.message });
+  }
+}
+
 const getUserMeasurementData = async (req, res) => {
   try {
     const user_id = req.params.userId;
     const { measurement_id } = req.body;
-  
+
     const result = await measurementService.getUserMeasurementData(user_id, measurement_id)
     res.status(200).json({ message: "해당 유저의 측정 기록들 조회 완료", result : result});
   } catch (err) {
@@ -13,7 +32,7 @@ const getUserMeasurementData = async (req, res) => {
     res.status(err.statusCode || 500).json({ message: err.message });
   }
 }
-
+    
 const getMeasurementData = async (req, res) => {
   let { date1, date2, weight1, weight2 } = req.query;
 
@@ -117,8 +136,9 @@ const deleteMeasurementData = async (req, res) => {
     res.status(400).json({ message: "error" });
   }
 };
-
+  
 module.exports = {
+  createMeasurementData,
   getMeasurementData,
   deleteMeasurementData,
   getUserMeasurementData,
