@@ -88,7 +88,9 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+
 -- Dumping routines for database 'bodit_2nd'
+
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -117,4 +119,5 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20221004095332'),
   ('20221004095346'),
   ('20221006044656');
+
 UNLOCK TABLES;
