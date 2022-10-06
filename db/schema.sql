@@ -82,12 +82,15 @@ CREATE TABLE `users` (
   `birth` varchar(50) DEFAULT NULL,
   `height` decimal(4,1) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
+  `deleted` varchar(50) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping routines for database 'bodit'
+
+-- Dumping routines for database 'bodit_2nd'
+
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -114,5 +117,7 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20221004095255'),
   ('20221004095321'),
   ('20221004095332'),
-  ('20221004095346');
+  ('20221004095346'),
+  ('20221006044656');
+
 UNLOCK TABLES;
