@@ -1,3 +1,4 @@
+const { get } = require("../routes/measurement.js");
 const measurementService = require("../services/measurement.js");
 
 const getMeasurementData = async (req, res) => {
@@ -48,6 +49,12 @@ const getMeasurementData = async (req, res) => {
       weight1,
       weight2,
     );
+
+    if (getMeasurementData.length === 0) {
+      res
+        .status(200)
+        .json({ message: "설정하신 범위에 일치하는 데이터가 없습니다." });
+    }
     res.status(200).json(getMeasurementData);
   } catch (err) {
     console.log(err);
