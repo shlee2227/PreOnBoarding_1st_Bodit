@@ -4,6 +4,9 @@ const measurementController = require("../controllers/measurement");
 const router = express.Router();
 
 router.get("/measurement", measurementController.getMeasurementData);
-router.delete("/measurement", measurementController.deleteMeasurementData);
+router.delete(
+  "/measurement/:measurementId",
+  measurementController.deleteMeasurementData,
+);
 
 module.exports = router;
