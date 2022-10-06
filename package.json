@@ -4,7 +4,7 @@
   "description": "## wanted_pre-onboarding_1st_back_team2",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "DOTENV_CONFIG_PATH=.env.test jest --setupFiles=dotenv/config --forceExit",
     "format": "prettier --config ./.prettierrc.json --write '**/*.{js,jsx,ts,tsx}'",
     "start": "node server.js"
   },
@@ -30,6 +30,11 @@
     "typeorm": "^0.3.10"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3",
+    "babel-jest": "^29.1.2",
+    "jest": "^29.1.2",
+    "prettier": "^2.7.1",
+    "supertest": "^6.3.0"
   }
 }
