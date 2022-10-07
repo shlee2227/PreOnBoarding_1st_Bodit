@@ -109,7 +109,7 @@
 
 
 **API DOC**
-▶️ [API DOC](https://dbdiagram.io/d/633bddcef0018a1c5f8b39d4](https://documenter.getpostman.com/view/15423127/2s83zdwSFu#f5691cd7-dc6d-4b8e-bb52-6dd4dde23a97)
+- ▶️ [API DOC](https://documenter.getpostman.com/view/15423127/2s83zdwSFu#f5691cd7-dc6d-4b8e-bb52-6dd4dde23a97)
 
 
 
